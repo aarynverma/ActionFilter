@@ -4,6 +4,16 @@ namespace ActionFilter.Controllers
 {
     [ApiController]
     [Route("[controller]")]
+    public class UserController : ControllerBase
+    {
+        public string Get()
+        {
+            return "Hello User";
+        }
+    }
+    [ApiController]
+    [Route("weatherforcast")]
+    
     public class WeatherForecastController : ControllerBase
     {
         private static readonly string[] Summaries = new[]
@@ -19,6 +29,7 @@ namespace ActionFilter.Controllers
         }
 
         [HttpGet(Name = "GetWeatherForecast")]
+        [MysampleActionFilter("Request")]
         public IEnumerable<WeatherForecast> Get()
         {
             return Enumerable.Range(1, 5).Select(index => new WeatherForecast
